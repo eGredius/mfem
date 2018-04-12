@@ -4645,12 +4645,18 @@ int *Mesh::GeneratePartitioning(int nparts, int part_method)
    ElementToElementTable();
 
    partitioning = new int[NumOfElements];
-
    if (nparts == 1)
    {
       for (i = 0; i < NumOfElements; i++)
       {
          partitioning[i] = 0;
+      }
+   }
+   else if (nparts == NumOfElements)
+   {
+      for (i = 0; i < NumOfElements; i++)
+      {
+         partitioning[i] = i;
       }
    }
    else
